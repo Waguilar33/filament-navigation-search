@@ -1,0 +1,10 @@
+/vendor
+.phpunit.result.cache
+.DS_Store
+composer.lock
+/build
+/workbench/storage
+.phpunit.cache
+/docs/plans
+/.claude/*.local.json
+/.claude/worktrees
