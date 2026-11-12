@@ -6,6 +6,7 @@ namespace Workbench\App\Providers\Filament;
 
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationItem;
 use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -15,6 +16,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Waguilar\FilamentNavigationSearch\FilamentNavigationSearchPlugin;
 use Workbench\App\Http\Middleware\SetDemoLocale;
 
 final class DemoPanelProvider extends PanelProvider
@@ -30,6 +32,12 @@ final class DemoPanelProvider extends PanelProvider
             ->pages([Dashboard::class])
             ->discoverPages(in: __DIR__.'/../../Filament/Pages', for: 'Workbench\\App\\Filament\\Pages')
             ->discoverResources(in: __DIR__.'/../../Filament/Resources', for: 'Workbench\\App\\Filament\\Resources')
+            ->plugin(FilamentNavigationSearchPlugin::make())
+            ->navigationItems([
+                NavigationItem::make(fn (): string => __('demo::demo.filament_docs'))
+                    ->url('https://filamentphp.com/docs', shouldOpenInNewTab: true)
+                    ->group(fn (): string => __('demo::demo.settings')),
+            ])
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
