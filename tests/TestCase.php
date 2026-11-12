@@ -22,6 +22,7 @@ use Orchestra\Testbench\Concerns\WithWorkbench;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Waguilar\FilamentNavigationSearch\FilamentNavigationSearchServiceProvider;
 use Workbench\App\Providers\Filament\DemoPanelProvider;
+use Workbench\App\Providers\Filament\PlainPanelProvider;
 use Workbench\App\Providers\WorkbenchServiceProvider;
 
 abstract class TestCase extends Orchestra
@@ -72,6 +73,7 @@ abstract class TestCase extends Orchestra
             FilamentNavigationSearchServiceProvider::class,
             WorkbenchServiceProvider::class,
             DemoPanelProvider::class,
+            PlainPanelProvider::class,
         ];
     }
 }

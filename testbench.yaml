@@ -4,6 +4,7 @@ providers:
   - Waguilar\FilamentNavigationSearch\FilamentNavigationSearchServiceProvider
   - Workbench\App\Providers\WorkbenchServiceProvider
   - Workbench\App\Providers\Filament\DemoPanelProvider
+  - Workbench\App\Providers\Filament\PlainPanelProvider
 
 migrations:
   - workbench/database/migrations

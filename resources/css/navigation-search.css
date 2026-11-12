@@ -1,0 +1,41 @@
+.fi-navigation-search {
+    margin-bottom: 0.5rem;
+}
+
+.fi-navigation-search-results {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+}
+
+.fi-navigation-search-results .fi-sidebar-item-label {
+    flex: 1 1 0%;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.fi-navigation-search-group {
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: var(--gray-500);
+}
+
+.fi-navigation-search-empty {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--gray-500);
+}
+
+.fi-navigation-search-dropdown {
+    padding: 0.5rem;
+}
+
+.fi-navigation-search-dropdown .fi-navigation-search-results {
+    max-height: 20rem;
+    overflow-y: auto;
+}
