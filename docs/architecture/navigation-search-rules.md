@@ -1,6 +1,6 @@
 # Navigation Search Rules
 
-**Status:** Stage 1 planned, not built.
+**Status:** Stage 1 built on branch `feat/stage-1`, to be released as v1.0.0-beta.1.
 **Last updated:** 2026-11-12
 
 ## Agreed rules
