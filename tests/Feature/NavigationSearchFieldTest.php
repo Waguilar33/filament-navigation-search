@@ -42,3 +42,9 @@ it('filters the sidebar instead of showing results when the option is on', funct
         ->assertDontSee('fi-navigation-search-anchor', false)
         ->assertSee('data-navigation-search-input="collapsed"', false);
 });
+
+it('places the collapsed search icon in the same container as the sidebar icons', function (): void {
+    $this->get('/demo')
+        ->assertOk()
+        ->assertSeeInOrder(['class="fi-sidebar-nav-groups"', 'data-navigation-search-dropdown', '<ul class="fi-sidebar-nav-groups">'], false);
+});

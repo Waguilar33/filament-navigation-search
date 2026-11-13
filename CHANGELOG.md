@@ -2,6 +2,10 @@
 
 All notable changes to `filament-navigation-search` will be documented in this file.
 
+## v1.0.0-beta.3 - 2026-11-12
+
+- The search icon in the collapsed (icon-only) sidebar now lines up with the other sidebar icons and no longer makes the sidebar overflow sideways.
+
 ## v1.0.0-beta.2 - 2026-11-12
 
 - Results show in Filament's dropdown component under the field, as wide as the field, with the group as a gray badge.

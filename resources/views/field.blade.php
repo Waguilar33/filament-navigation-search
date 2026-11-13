@@ -197,31 +197,31 @@
         @endif
     </div>
 
-    <x-filament::dropdown
-        :placement="(__('filament-panels::layout.direction') === 'rtl') ? 'left-start' : 'right-start'"
-        :menu="false"
-        data-navigation-search-dropdown
-        width="xs"
-        x-show="! $store.sidebar.isOpen"
-        x-cloak
-    >
-        <x-slot name="trigger">
-            <button
-                type="button"
-                x-on:click="requestAnimationFrame(() => $el.closest('.fi-navigation-search').querySelector(`[data-navigation-search-input='collapsed']`).focus())"
-                aria-label="{{ $placeholder }}"
-                class="fi-sidebar-group-dropdown-trigger-btn"
-            >
-                {{ \Filament\Support\generate_icon_html(Heroicon::OutlinedMagnifyingGlass, size: IconSize::Large) }}
-            </button>
-        </x-slot>
+    <div x-show="! $store.sidebar.isOpen" x-cloak class="fi-sidebar-nav-groups">
+        <x-filament::dropdown
+            :placement="(__('filament-panels::layout.direction') === 'rtl') ? 'left-start' : 'right-start'"
+            :menu="false"
+            data-navigation-search-dropdown
+            width="xs"
+        >
+            <x-slot name="trigger">
+                <button
+                    type="button"
+                    x-on:click="requestAnimationFrame(() => $el.closest('.fi-navigation-search').querySelector(`[data-navigation-search-input='collapsed']`).focus())"
+                    aria-label="{{ $placeholder }}"
+                    class="fi-sidebar-group-dropdown-trigger-btn"
+                >
+                    {{ \Filament\Support\generate_icon_html(Heroicon::OutlinedMagnifyingGlass, size: IconSize::Large) }}
+                </button>
+            </x-slot>
 
-        <div class="fi-navigation-search-dropdown" data-navigation-search-panel>
-            @include('filament-navigation-search::input', ['mode' => 'collapsed'])
+            <div class="fi-navigation-search-dropdown" data-navigation-search-panel>
+                @include('filament-navigation-search::input', ['mode' => 'collapsed'])
 
-            <div x-show="isSearching()" x-cloak class="fi-navigation-search-dropdown-results">
-                @include('filament-navigation-search::results')
+                <div x-show="isSearching()" x-cloak class="fi-navigation-search-dropdown-results">
+                    @include('filament-navigation-search::results')
+                </div>
             </div>
-        </div>
-    </x-filament::dropdown>
+        </x-filament::dropdown>
+    </div>
 </div>
