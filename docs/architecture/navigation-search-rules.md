@@ -1,6 +1,6 @@
 # Navigation Search Rules
 
-**Status:** Stage 1 built on branch `feat/stage-1`, to be released as v1.0.0-beta.1.
+**Status:** Stage 2 (NS2, NS13, NS14) built, to be released as v1.0.0-beta.2.
 **Last updated:** 2026-11-12
 
 ## Agreed rules
@@ -8,7 +8,7 @@
 | # | Rule | Reason |
 |---|---|---|
 | NS1 | Menu search is its own field, separate from Filament's global search. It never registers a global search provider. | Owner, 2026-11-12: "one is to quickly search the options on my menu, and the other one is a global search that has nothing to do with this." |
-| NS2 | Matches show as a result list under the field. The plugin never hides or reorders Filament's own sidebar groups and items. | Owner agreed 2026-11-12. Filtering the menu in place depends on Filament's internal sidebar markup and cannot work in the collapsed sidebar. |
+| NS2 | By default matches show as results under the field, and Filament's sidebar is left as it is. Filtering the sidebar in place is opt-in (NS14). | Owner, 2026-11-12: the owner expected the menu to filter; made configurable, default unchanged. |
 | NS3 | The index is built on the server from the panel's resolved navigation (`Filament::getNavigation()`). Labels, translations, hidden items and authorization come from Filament; the plugin keeps no list of its own. | Owner, 2026-11-12: Filament already resolves every label, including the fallback to the model label, and the translations. |
 | NS4 | An entry matches on its navigation label, its group label, and, for a Resource, its singular model label (`getModelLabel()`). | Owner, 2026-11-12: reach the label Filament resolves even when none is set. |
 | NS5 | A Resource or Page adds search keywords by implementing `HasNavigationSearchKeywords` (`getNavigationSearchKeywords()`, returning translated strings). The README documents it as the way to extend the search. | Owner, 2026-11-12: extending it is documentation; plugins built the Filament way work as they are. |
@@ -19,11 +19,14 @@
 | NS10 | The query clears after a result opens, including in SPA mode. | Raised 2026-11-12 in the plan; the sidebar persists across `wire:navigate`. |
 | NS11 | The plugin's own words (placeholder, no results) are translated in `en` and `es`. | Owner, 2026-11-12: translations must be handled. |
 | NS12 | Beta supports Filament `^5.10.2` only and is released as `v1.0.0-beta.N` from a public repository. | Owner, 2026-11-12: everything stays in beta for a while. Filament 4 is not verified. |
+| NS13 | Results show in Filament's own dropdown component (`x-filament::dropdown` with `dropdown.list` and `dropdown.list.item`) under the field and exactly as wide as it (`width="none"` lifts the dropdown's 14rem cap; the plugin stylesheet sets the panel to the field's width, since Filament has no option to match the trigger's width): icon, label, and the group as a gray badge. In the collapsed sidebar the field and results sit in one dropdown. | Owner, 2026-11-12: use what Filament offers, not our own markup. `x-filament::input.select` was rejected: a native select cannot take typed text. |
+| NS14 | `FilamentNavigationSearchPlugin::make()->filterNavigation()` filters Filament's sidebar in place while typing: items whose link matches no result are hidden, groups left empty are hidden, collapsed groups holding a match open while searching and close again when the query clears. Keys still work: arrows move a highlight through the visible items, Enter opens it. In the icon-only sidebar it falls back to the dropdown results. It reads Filament's sidebar markup (`.fi-sidebar-item`, `.fi-sidebar-group`, `$store.sidebar.collapsedGroups`), so a Filament update can break it; the default mode does not depend on that markup. | Owner, 2026-11-12: the menu should be able to filter as you type; configurable, default unchanged. |
 
 ## Superseded
 
 | Rule | Old wording | Replaced | Why |
 |---|---|---|---|
+| NS2 | Matches show as a result list under the field. The plugin never hides or reorders Filament's own sidebar groups and items. | 2026-11-12 | Owner expected the menu to filter; filtering became opt-in (NS14), the default stays results under the field. |
 
 ## Facts
 

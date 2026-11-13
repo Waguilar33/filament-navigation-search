@@ -26,3 +26,19 @@ it('leaves panels without the plugin untouched', function (): void {
         ->assertOk()
         ->assertDontSee('data-navigation-search-input', false);
 });
+
+it('shows results in Filament dropdown items under the field', function (): void {
+    $this->get('/demo')
+        ->assertOk()
+        ->assertSee('fi-navigation-search-anchor', false)
+        ->assertSeeInOrder(['fi-dropdown-list-item', 'data-navigation-search-result="1"'], false)
+        ->assertDontSee('data-navigation-search-filters-navigation', false);
+});
+
+it('filters the sidebar instead of showing results when the option is on', function (): void {
+    $this->get('/demo?filter=1')
+        ->assertOk()
+        ->assertSee('data-navigation-search-filters-navigation', false)
+        ->assertDontSee('fi-navigation-search-anchor', false)
+        ->assertSee('data-navigation-search-input="collapsed"', false);
+});

@@ -2,6 +2,11 @@
 
 All notable changes to `filament-navigation-search` will be documented in this file.
 
+## v1.0.0-beta.2 - 2026-11-12
+
+- Results show in Filament's dropdown component under the field, as wide as the field, with the group as a gray badge.
+- New `filterNavigation()` option: filters Filament's sidebar in place while typing, opening collapsed groups that hold a match and restoring them after. Off by default.
+
 ## v1.0.0-beta.1 - 2026-11-12
 
 - A search field at the top of the sidebar of panels that register the plugin, separate from global search.
