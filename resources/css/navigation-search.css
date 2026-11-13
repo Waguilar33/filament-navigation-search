@@ -2,26 +2,8 @@
     margin-bottom: 0.5rem;
 }
 
-.fi-navigation-search-results {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    margin-top: 0.5rem;
-}
-
-.fi-navigation-search-results .fi-sidebar-item-label {
-    flex: 1 1 0%;
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.fi-navigation-search-group {
-    flex-shrink: 0;
-    font-size: 0.75rem;
-    line-height: 1rem;
-    color: var(--gray-500);
+.fi-navigation-search-anchor {
+    display: block;
 }
 
 .fi-navigation-search-empty {
@@ -35,7 +17,24 @@
     padding: 0.5rem;
 }
 
-.fi-navigation-search-dropdown .fi-navigation-search-results {
+.fi-navigation-search-dropdown-results {
     max-height: 20rem;
+    margin-top: 0.5rem;
     overflow-y: auto;
+}
+
+.fi-sidebar-item[data-navigation-search-highlighted] > .fi-sidebar-item-btn {
+    background-color: var(--gray-100);
+}
+
+.dark .fi-sidebar-item[data-navigation-search-highlighted] > .fi-sidebar-item-btn {
+    background-color: color-mix(in oklab, var(--color-white) 5%, transparent);
+}
+
+[data-navigation-search-results] {
+    position: relative;
+}
+
+[data-navigation-search-results] > .fi-dropdown-panel {
+    width: 100%;
 }

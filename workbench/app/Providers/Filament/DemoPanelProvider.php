@@ -18,6 +18,7 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Waguilar\FilamentNavigationSearch\FilamentNavigationSearchPlugin;
 use Workbench\App\Http\Middleware\SetDemoLocale;
+use Workbench\App\Http\Middleware\SetDemoNavigationMode;
 
 final class DemoPanelProvider extends PanelProvider
 {
@@ -32,7 +33,7 @@ final class DemoPanelProvider extends PanelProvider
             ->pages([Dashboard::class])
             ->discoverPages(in: __DIR__.'/../../Filament/Pages', for: 'Workbench\\App\\Filament\\Pages')
             ->discoverResources(in: __DIR__.'/../../Filament/Resources', for: 'Workbench\\App\\Filament\\Resources')
-            ->plugin(FilamentNavigationSearchPlugin::make())
+            ->plugin(FilamentNavigationSearchPlugin::make()->filterNavigation(fn (): bool => (bool) session('demo_filter_navigation', false)))
             ->navigationItems([
                 NavigationItem::make(fn (): string => __('demo::demo.filament_docs'))
                     ->url('https://filamentphp.com/docs', shouldOpenInNewTab: true)
@@ -44,6 +45,7 @@ final class DemoPanelProvider extends PanelProvider
                 StartSession::class,
                 ShareErrorsFromSession::class,
                 SetDemoLocale::class,
+                SetDemoNavigationMode::class,
                 VerifyCsrfToken::class,
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
