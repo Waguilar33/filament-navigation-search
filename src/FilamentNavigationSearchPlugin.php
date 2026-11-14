@@ -19,6 +19,8 @@ final class FilamentNavigationSearchPlugin implements Plugin
 
     private bool|Closure $filtersNavigation = false;
 
+    private bool|Closure $isSticky = false;
+
     public static function make(): self
     {
         return app(self::class);
@@ -41,6 +43,18 @@ final class FilamentNavigationSearchPlugin implements Plugin
         return (bool) $this->evaluate($this->filtersNavigation);
     }
 
+    public function sticky(bool|Closure $condition = true): self
+    {
+        $this->isSticky = $condition;
+
+        return $this;
+    }
+
+    public function isSticky(): bool
+    {
+        return (bool) $this->evaluate($this->isSticky);
+    }
+
     public function register(Panel $panel): void
     {
         $panel->renderHook(
@@ -48,6 +62,7 @@ final class FilamentNavigationSearchPlugin implements Plugin
             fn (): View => view('filament-navigation-search::field', [
                 'entries' => app(BuildNavigationSearchIndexAction::class)->handle(Filament::getNavigation()),
                 'filterNavigation' => $this->filtersNavigation(),
+                'sticky' => $this->isSticky(),
             ]),
         );
     }

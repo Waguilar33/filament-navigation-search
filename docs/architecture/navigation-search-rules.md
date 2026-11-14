@@ -1,7 +1,7 @@
 # Navigation Search Rules
 
-**Status:** Stage 2 (NS2, NS13, NS14) built, to be released as v1.0.0-beta.2.
-**Last updated:** 2026-11-12
+**Status:** Stage 2 (NS2, NS13, NS14) released in v1.0.0-beta.2; NS15 (sticky field) released in v1.0.0-beta.4.
+**Last updated:** 2026-11-13
 
 ## Agreed rules
 
@@ -21,6 +21,7 @@
 | NS12 | Beta supports Filament `^5.10.2` only and is released as `v1.0.0-beta.N` from a public repository. | Owner, 2026-11-12: everything stays in beta for a while. Filament 4 is not verified. |
 | NS13 | Results show in Filament's own dropdown component (`x-filament::dropdown` with `dropdown.list` and `dropdown.list.item`) under the field and exactly as wide as it (`width="none"` lifts the dropdown's 14rem cap; the plugin stylesheet sets the panel to the field's width, since Filament has no option to match the trigger's width): icon, label, and the group as a gray badge. In the collapsed sidebar the field and results sit in one dropdown. | Owner, 2026-11-12: use what Filament offers, not our own markup. `x-filament::input.select` was rejected: a native select cannot take typed text. |
 | NS14 | `FilamentNavigationSearchPlugin::make()->filterNavigation()` filters Filament's sidebar in place while typing: items whose link matches no result are hidden, groups left empty are hidden, collapsed groups holding a match open while searching and close again when the query clears. Keys still work: arrows move a highlight through the visible items, Enter opens it. In the icon-only sidebar it falls back to the dropdown results. It reads Filament's sidebar markup (`.fi-sidebar-item`, `.fi-sidebar-group`, `$store.sidebar.collapsedGroups`), so a Filament update can break it; the default mode does not depend on that markup. | Owner, 2026-11-12: the menu should be able to filter as you type; configurable, default unchanged. |
+| NS15 | By default the field scrolls with the menu. `FilamentNavigationSearchPlugin::make()->sticky()` pins it to the top of `.fi-sidebar-nav` with `position: sticky`, painting Filament's default sidebar background behind it so items scroll under it. Its offsets mirror the nav's padding (`py-8`) and the groups' `-mx-2`, dropped horizontally in the icon-only sidebar to avoid sideways overflow, so a Filament update to that spacing can misalign it. | Owner, 2026-11-12: wants the search to stay in view; opt-in, default unchanged. |
 
 ## Superseded
 

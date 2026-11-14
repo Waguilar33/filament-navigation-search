@@ -51,6 +51,17 @@ Items that do not match are hidden, groups left empty are hidden, and collapsed 
 
 `filterNavigation()` accepts a closure, so it can depend on the user or the panel. This mode works on Filament's sidebar markup, so a Filament update can change how it behaves; the default dropdown mode does not depend on that markup.
 
+## Keeping the field in view
+
+By default the field scrolls away with the rest of the menu. To keep it pinned to the top of the sidebar while the menu scrolls under it, turn on `sticky()`:
+
+```php
+FilamentNavigationSearchPlugin::make()
+    ->sticky()
+```
+
+`sticky()` accepts a closure. The pinned field takes Filament's default sidebar background; a theme that changes that background can restyle `.fi-navigation-search[data-navigation-search-sticky]`.
+
 ## Adding keywords
 
 A resource or page can add extra words people may search for by implementing `HasNavigationSearchKeywords`. Return translated strings, so each language finds its own words:

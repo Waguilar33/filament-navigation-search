@@ -33,7 +33,9 @@ final class DemoPanelProvider extends PanelProvider
             ->pages([Dashboard::class])
             ->discoverPages(in: __DIR__.'/../../Filament/Pages', for: 'Workbench\\App\\Filament\\Pages')
             ->discoverResources(in: __DIR__.'/../../Filament/Resources', for: 'Workbench\\App\\Filament\\Resources')
-            ->plugin(FilamentNavigationSearchPlugin::make()->filterNavigation(fn (): bool => (bool) session('demo_filter_navigation', false)))
+            ->plugin(FilamentNavigationSearchPlugin::make()
+                ->filterNavigation(fn (): bool => (bool) session('demo_filter_navigation', false))
+                ->sticky(fn (): bool => (bool) session('demo_sticky_search', false)))
             ->navigationItems([
                 NavigationItem::make(fn (): string => __('demo::demo.filament_docs'))
                     ->url('https://filamentphp.com/docs', shouldOpenInNewTab: true)
