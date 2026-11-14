@@ -2,6 +2,35 @@
     margin-bottom: 0.5rem;
 }
 
+.fi-navigation-search[data-navigation-search-sticky] {
+    position: sticky;
+    /* Offsets match .fi-sidebar-nav's py-8 and .fi-sidebar-nav-groups' -mx-2; sticky insets by the nav's padding, so top cancels it. */
+    top: -2rem;
+    z-index: 10;
+    margin: -2rem -0.5rem 0;
+    padding: 2rem 0.5rem 0.5rem;
+    background-color: var(--color-white);
+}
+
+.fi-navigation-search[data-navigation-search-sticky][data-navigation-search-sidebar-collapsed] {
+    margin-inline: 0;
+    padding-inline: 0;
+}
+
+.dark .fi-navigation-search[data-navigation-search-sticky] {
+    background-color: var(--gray-900);
+}
+
+@media (min-width: 64rem) {
+    .fi-navigation-search[data-navigation-search-sticky] {
+        background-color: var(--gray-50);
+    }
+
+    .dark .fi-navigation-search[data-navigation-search-sticky] {
+        background-color: var(--gray-950);
+    }
+}
+
 .fi-navigation-search-anchor {
     display: block;
 }

@@ -19,6 +19,10 @@ final class SetDemoNavigationMode
             $request->session()->put('demo_filter_navigation', $request->boolean('filter'));
         }
 
+        if ($request->has('sticky')) {
+            $request->session()->put('demo_sticky_search', $request->boolean('sticky'));
+        }
+
         return $next($request);
     }
 }

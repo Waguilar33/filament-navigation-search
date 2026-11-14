@@ -2,6 +2,10 @@
 
 All notable changes to `filament-navigation-search` will be documented in this file.
 
+## v1.0.0-beta.4 - 2026-11-13
+
+- New `sticky()` option: keeps the field pinned to the top of the sidebar while the menu scrolls. Off by default.
+
 ## v1.0.0-beta.3 - 2026-11-12
 
 - The search icon in the collapsed (icon-only) sidebar now lines up with the other sidebar icons and no longer makes the sidebar overflow sideways.

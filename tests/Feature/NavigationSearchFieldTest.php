@@ -48,3 +48,13 @@ it('places the collapsed search icon in the same container as the sidebar icons'
         ->assertOk()
         ->assertSeeInOrder(['class="fi-sidebar-nav-groups"', 'data-navigation-search-dropdown', '<ul class="fi-sidebar-nav-groups">'], false);
 });
+
+it('scrolls with the menu unless the sticky option is on', function (): void {
+    $this->get('/demo')
+        ->assertOk()
+        ->assertDontSee('data-navigation-search-sticky', false);
+
+    $this->get('/demo?sticky=1')
+        ->assertOk()
+        ->assertSee('data-navigation-search-sticky', false);
+});

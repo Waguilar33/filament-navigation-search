@@ -172,6 +172,10 @@
     @if ($filterNavigation)
         data-navigation-search-filters-navigation
     @endif
+    @if ($sticky)
+        data-navigation-search-sticky
+        x-bind:data-navigation-search-sidebar-collapsed="! $store.sidebar.isOpen"
+    @endif
     class="fi-navigation-search"
 >
     <div x-show="$store.sidebar.isOpen" data-navigation-search-panel>
