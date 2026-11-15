@@ -205,6 +205,7 @@
         <x-filament::dropdown
             :placement="(__('filament-panels::layout.direction') === 'rtl') ? 'left-start' : 'right-start'"
             :menu="false"
+            :teleport="true"
             data-navigation-search-dropdown
             width="xs"
         >

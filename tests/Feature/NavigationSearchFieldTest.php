@@ -58,3 +58,10 @@ it('scrolls with the menu unless the sticky option is on', function (): void {
         ->assertOk()
         ->assertSee('data-navigation-search-sticky', false);
 });
+
+it('opens the collapsed search outside the sidebar, so the sidebar cannot clip it or push it to the left', function (): void {
+    $this->get('/demo')
+        ->assertOk()
+        ->assertSee('.teleport', false)
+        ->assertSeeInOrder(['data-navigation-search-dropdown', 'data-navigation-search-input="collapsed"'], false);
+});
