@@ -2,6 +2,10 @@
 
 All notable changes to `filament-navigation-search` will be documented in this file.
 
+## v1.0.0-beta.5 - 2026-11-15
+
+- In the collapsed (icon-only) sidebar the search opens to the right of the icon again. The sidebar's scrolling clipped the dropdown, so it flipped left and off the screen; it now opens outside the sidebar.
+
 ## v1.0.0-beta.4 - 2026-11-13
 
 - New `sticky()` option: keeps the field pinned to the top of the sidebar while the menu scrolls. Off by default.
