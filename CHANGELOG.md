@@ -2,6 +2,10 @@
 
 All notable changes to `filament-navigation-search` will be documented in this file.
 
+## v1.0.0-beta.6 - 2026-11-26
+
+- In the collapsed (icon-only) sidebar the search dropdown now opens level with the icon. It opened lower (and further right) by however far the sidebar sits from the top-left of the window, such as below a topbar.
+
 ## v1.0.0-beta.5 - 2026-11-15
 
 - In the collapsed (icon-only) sidebar the search opens to the right of the icon again. The sidebar's scrolling clipped the dropdown, so it flipped left and off the screen; it now opens outside the sidebar.
