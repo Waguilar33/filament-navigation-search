@@ -22,6 +22,11 @@
 }
 
 @media (min-width: 64rem) {
+    /* Filament's bundled Floating UI ignores the CSS translate property, so the sidebar's translate-x-0 would offset the fixed dropdown by the sidebar's position. */
+    .fi-body-has-sidebar-collapsible-on-desktop .fi-sidebar:not(.fi-sidebar-open):has([data-navigation-search-dropdown]) {
+        translate: none;
+    }
+
     .fi-navigation-search[data-navigation-search-sticky] {
         background-color: var(--gray-50);
     }
